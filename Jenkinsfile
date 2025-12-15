@@ -65,7 +65,7 @@ pipeline {
                 echo '=== Stage: Analyse de Qualité (SonarQube) ==='
                 script {
                     withSonarQubeEnv('SonarQube') {
-                        bat 'mvn sonar:sonar'
+                        bat 'start /B mvn sonar:sonar'
                     }
                 }
             }
