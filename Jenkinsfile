@@ -111,7 +111,7 @@ pipeline {
                 body: """
                     Le build du projet ${env. JOB_NAME} a réussi.
                     Build: #${env.BUILD_NUMBER}
-                    Voir: ${env.BUILD_URL}
+                    Logs: ${env.BUILD_URL}
                 """,
                 to: 'elmelssez@gmail.com',
                 from: 'elmouktadirmohamed@gmail.com',  // ← Email d'envoi
