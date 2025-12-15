@@ -113,7 +113,10 @@ pipeline {
                     Build: #${env.BUILD_NUMBER}
                     Voir: ${env.BUILD_URL}
                 """,
-                to: 'elmelssez@gmail.com'
+                to: 'elmelssez@gmail.com',
+                from: 'elmouktadirmohamed@gmail.com',  // ← Email d'envoi
+                replyTo: 'elmelssez@gmail.com',
+                mimeType: 'text/plain'  // ou 'text/html'
             )
         }
 
