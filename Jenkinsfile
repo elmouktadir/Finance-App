@@ -14,7 +14,7 @@ pipeline {
     options {
         buildDiscarder(logRotator(numToKeepStr: '10'))
         timestamps()
-        timeout(time: 30, unit: 'MINUTES')
+        timeout(time:  30, unit: 'MINUTES')
     }
 
     stages {
@@ -28,14 +28,14 @@ pipeline {
         stage('Build') {
             steps {
                 echo '=== Stage: Compilation ==='
-                sh 'mvn clean compile'
+                bat 'mvn clean compile'
             }
         }
 
         stage('Unit Tests') {
             steps {
                 echo '=== Stage: Tests Unitaires ==='
-                sh 'mvn test'
+                bat 'mvn test'
             }
             post {
                 always {
@@ -47,14 +47,14 @@ pipeline {
         stage('Code Coverage') {
             steps {
                 echo '=== Stage: Couverture de Code ==='
-                sh 'mvn jacoco:report'
+                bat 'mvn jacoco:report'
             }
             post {
                 always {
                     jacoco(
                         execPattern: '**/target/jacoco.exec',
                         classPattern: '**/target/classes',
-                        sourcePattern: '**/src/main/java'
+                        sourcePattern:  '**/src/main/java'
                     )
                 }
             }
@@ -65,7 +65,7 @@ pipeline {
                 echo '=== Stage: Analyse de Qualité (SonarQube) ==='
                 script {
                     withSonarQubeEnv('SonarQube') {
-                        sh 'mvn sonar:sonar'
+                        bat 'mvn sonar:sonar'
                     }
                 }
             }
@@ -85,7 +85,7 @@ pipeline {
         stage('Package') {
             steps {
                 echo '=== Stage: Packaging ==='
-                sh 'mvn package -DskipTests'
+                bat 'mvn package -DskipTests'
             }
             post {
                 success {
@@ -107,11 +107,11 @@ pipeline {
             emailext(
                 subject: "✓ Build réussi - ${env.JOB_NAME} #${env.BUILD_NUMBER}",
                 body: """
-                    Le build du projet ${env.JOB_NAME} a réussi.
+                    Le build du projet ${env. JOB_NAME} a réussi.
                     Build: #${env.BUILD_NUMBER}
                     Voir: ${env.BUILD_URL}
                 """,
-                to: 'm.elmouktadir@gmail.com'
+                to: 'm. elmouktadir@gmail. com'
             )
         }
 
@@ -119,7 +119,7 @@ pipeline {
             echo '✗ Build échoué!'
             emailext(
                 subject: "✗ Build échoué - ${env.JOB_NAME} #${env.BUILD_NUMBER}",
-                body: """
+                body:  """
                     Le build du projet ${env.JOB_NAME} a échoué.
                     Build: #${env.BUILD_NUMBER}
                     Logs: ${env.BUILD_URL}console
