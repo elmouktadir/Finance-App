@@ -111,7 +111,7 @@ pipeline {
                     Build: #${env.BUILD_NUMBER}
                     Voir: ${env.BUILD_URL}
                 """,
-                to: 'team@university.com'
+                to: 'm.elmouktadir@gmail.com'
             )
         }
 
@@ -124,7 +124,7 @@ pipeline {
                     Build: #${env.BUILD_NUMBER}
                     Logs: ${env.BUILD_URL}console
                 """,
-                to: 'team@university.com'
+                to: 'elmelssez@gmail.com'
             )
         }
     }
