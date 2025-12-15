@@ -113,7 +113,7 @@ pipeline {
                     Build: #${env.BUILD_NUMBER}
                     Voir: ${env.BUILD_URL}
                 """,
-                to: 'elmouktadirmouktadir@gmail.com'
+                to: 'elmouktadirmohamed@gmail.com'
             )
         }
 
