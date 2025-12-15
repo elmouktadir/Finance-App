@@ -73,16 +73,16 @@ pipeline {
         // Quality Gate désactivé temporairement
         // Vous pouvez consulter les résultats directement sur SonarQube
 
-//         stage('Quality Gate') {
-//             steps {
-//                 echo '=== Stage: Vérification Quality Gate ==='
-//                 script {
-//                     timeout(time: 10, unit: 'MINUTES') {
-//                         waitForQualityGate abortPipeline: false
-//                     }
-//                 }
-//             }
-//         }
+        stage('Quality Gate') {
+            steps {
+                echo '=== Stage: Vérification Quality Gate ==='
+                script {
+                    timeout(time: 10, unit: 'MINUTES') {
+                        waitForQualityGate abortPipeline: false
+                    }
+                }
+            }
+        }
 
         stage('Package') {
             steps {
